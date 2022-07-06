@@ -1,3 +1,5 @@
+import './List-info.scss';
+
 function ListInfo () :JSX.Element {
   return (
     

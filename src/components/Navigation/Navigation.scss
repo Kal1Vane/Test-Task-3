@@ -1,0 +1,116 @@
+
+.header__mobail-sidebar {
+  display: none;
+  position: relative;
+}
+
+.header__mobail-button {
+  border: none;
+  width: 30px;
+  height: 24px;
+  padding: 0;
+  outline: none;
+  z-index: 10;
+  background-color: transparent;
+  transition: all .6s;
+}
+.header__mobail-button::before {
+  transform: translateY(10px);
+}
+.header__mobail-button::after {
+  transform: translateY(-10px);
+}
+.header__mobail-button::before,
+.header__mobail-button::after {
+  content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    transform-origin: 50% 50%;
+    transition: all .25s;
+}
+.header__mobail-button::before,
+.header__mobail-button::after,
+.header__mobail-button span{
+  background: #5f656f;
+}
+.header__mobail-button span{
+  position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    overflow: hidden;
+    transition: all 0.25s;
+}
+.header__nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  transition: all .5s;
+}
+
+.header__nav-link {
+  font-size: 16px;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 400;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 8px;
+  transition: all .6s;
+}
+
+.header__nav-link:hover {
+  border-color: #3D3D3D;
+  color: #B1B1B1;
+}
+
+@media screen and (max-width: 867px ) {
+
+  .header__mobail-sidebar  {
+    display: block;
+  }
+  .header__nav-list {
+    transform: translateX(100%);
+    width: 100%;
+    position: fixed;
+    flex-direction: column;
+    max-width: 220px;
+    height: 100%;
+    background: #fff;
+    top: 0;
+    padding: 20px 0;
+    gap: 0;
+    background: linear-gradient(180deg, #fff 15%, #9bc798);
+  }
+  .header__nav-list.open {
+    display: flex;
+    transform: translateX(-60%);
+  }
+  .header__mobail-button.open {
+    transform: translateX(-180px);
+  }
+  .header__mobail-button.open::before {
+    transform: rotate(45deg);
+  }
+  .header__mobail-button.open span {
+    opacity: 0;
+  }
+  .header__mobail-button.open::after {
+    transform: rotate(315deg);
+  }
+  .header__nav-link {
+    color: black;
+  }
+  .header__nav-item {
+    padding: 10px;
+    border-bottom: 1px solid #e8e9ec;
+  }
+  .header__nav-item:not{
+    border-bottom: 1px solid #e8e9ec;
+  }
+}
