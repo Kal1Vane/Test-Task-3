@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+}
+
+#root {
+  width: 100%;
+  background: url('/../../project/public/img/background.png') no-repeat;
+  height: 100vh;
+  background-size: cover;
+  background-position-y: -40px;
+}
+
+@keyframes open-page {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #root {
+    background-size: 1250px 1000px;
+    background-position: center center;
+  }
+}

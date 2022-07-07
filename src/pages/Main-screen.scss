@@ -9,15 +9,20 @@
   max-width: 1200px;
   margin: 0 auto;
 }
-
+.main-section__content {
+  animation: open-page 1.5s;
+}
 .main-section__title {
   margin: 0;
   font-size: 48px;
   font-weight: 700;
   line-height: 70px;
-  background: linear-gradient(90deg, #fff 20%, #FF3F04);
+  background: linear-gradient(90deg, #fff 20%, #FF3F04 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
   text-transform: uppercase;
 }
 .main-section__subtitle{
@@ -53,5 +58,30 @@
   }
   .main-section__link {
     padding: 6px 16px;
+  }
+}
+.main-section__title {
+  animation: infinity-fair 4s infinite linear;
+  color: #fff;
+}
+
+
+
+
+@keyframes infinity-fair {
+  0% {
+    background-position: 100% 0;
+  }
+  25% {
+    background-position: 50% 0;
+  }
+  50% {
+    background-position: 25% 0;
+  }
+  75% {
+    background-position: 50% 0;
+  }
+  100% {
+    background-position: 100% 0;
   }
 }

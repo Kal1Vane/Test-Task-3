@@ -20,6 +20,7 @@
   padding: 10px 0;
   cursor: pointer;
   transition: all .5s;
+  animation: open-page 1.5s;
 }
 .section__item-info:hover {
   background-color: rgb(112 112 112 / 15%);

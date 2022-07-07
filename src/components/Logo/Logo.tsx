@@ -1,13 +1,35 @@
+import { useEffect, useRef } from "react";
 import { AppRoute } from "../../const";
 import './Logo.scss';
 function Logo() : JSX.Element{
-  return (
-<a className="header__logo-link" onClick={(evt) => evt.preventDefault()} href={AppRoute.MAIN}>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="274" height="34" viewBox="0 0 274 34">
-      <image  width="274" height="34" xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARIAAAAiCAYAAACTOlY6AAAABHNCSVQICAgIfAhkiAAACrlJREFUeF7tnQWsLDUbhrm4S3A/OMEDwd3dPdhBggX7seBs8EDw4AR3d5eLu0Nw/3F35/I+yUwyDJ22ozt7tl/yZs/u1Nv52s96ho0YMWKkQGEEwgiEEdAIjCNMJ0wmTCCMKvwp/C78LPwUff8x+v6rPv/g+bDASMICCiPQdyMAo5gnwoA+x49GAMbwvfCF8KXwqfC18JnwXcRIYCr/ocBI+m4NhQ732QjMqv4uLCwmLChMJYws/CB8KLwpvCS8KLwaMZHcQxQYSe4hCxnCCLR2BBBLFhAWF5YV5k+0lBPFU8I9wr3CM0Jleo3ASFq7JkLDwgg4R2BupVg0Om0so8/pUzlu1fdrhbuF/ztLK5EgMJISgxeyhhFoeARmUX1LCEtFpw6+J4lTxhXCXQKiSmMUGEljQx0qCiOQewRGUY4lheWFFQV0HWm6UT/cHDEPdB5docBIujLsodIwApkjMFbEONbV50rCNIaUiCqILNcLn7dhLAMjacMshDb0+wjALNaLGMdC+pzUMCC36bfLhIeF99s2YIGRtG1GQnv6ZQTGVEfXFjYS1hRGM3T87Yh5XK5PTLOtpcBIWjs1oWFDdATmU7+2FTYUJs/o44P6/VThml4Zg8BImpupuVTVy81VF2pq0Qjgar6xMCiskNEufDouFs4WHmlR272akmYkEykXHnCYlXCjHcOrFHciXG7fER4T8miWJ1H6XYTx3FUUToHL78fC88JDhUuxZzxRj/cQ8Cr8pIY6kKvxKaD8CSss/zeVxdy9JSCbf+NZNm0Z9ExbVTJ8Ju6zFDavnh0mECfyd0Y6Xnjm5yCB2JKyxPrdUdhemDajMGJZzhBYI++WrbBb+ZOM5AA1Yj+hzpcWrovCaGuBYB8XHR5NqitdVc9fU0G7Cnj/VUV4GfISQpxIeMmqotlV0CUC3ox1E56RrI8zPSoaVJrzPdJVmeQEFbaXpcCV9ewOzwo/ULq1hBc806eTzaYfdha2EcbNKANGdbpwipBncy3YpHqzxYwEO3WVL4+r1RzdsIv/4kh4lJ7v7yqshuecyNiFyxLRlCwSTnoxIfvuVrbgKD/ae9yim6RVVNmdjgqxQGCebJJYJ8c4KmReER9M/himrDvpRx/GGeedQ3+wIW/maMexen680ArTbRWTFDOS61QYdusmCZ3BK44KO3p+aJONiuo6Tp/7lqx3SuW/RUjGO8RFIooQ91CG8G58oEwBBfMyZ8ydjThxnlew/KLZEA329Mx8jtJt55kWT1GUozZRBwbCaYgTiI0u1EM2xzc86+6ZZDEj4QhHWHGS6Cz6CUKLiRasioapIOTCx6NPW7kdPTQxEuTcQQG9SxEibBpXY2RhzHBpulQ/bF6k4EQe265MWPaMQhk5fHflP8nQRvQaBwp1LVbWAw5RNuLFYlf+S6gsMMxSIboNxJY8Oi7ax4YBw3cRp0o2lhsE+h8TmwQiDIzGRjAjRK+ym4ernV17HjMSdAPIdUm6Wl+wcXeTOqrcxEh4SdLtLdJOXIvXMGRk5xgsUmAqz1X6jpnPRCieUWwXpX2UkSNymmBSUxQttM/yob84V8Ci4kMoTAl+4/MQwXWqeUJp/icw10OaYkbyunrJvQVJul1fVuty7zuq38RI0G6zo5clHH02MRSCotB1TPWtmxcbC5iJjtSPnIqKEAuUXS5NXEjDQk/unEXK76c8WNQQjbIoFptGVwJOe+hjTA5kcf5v9Qe6EqwxfUG2Ewl+/BzPu0kdVW5iJHj8zVxBw7B4mBRjVTISlyKbeyOGF+hLmxkJ1qQNCvTJlAVR7WTBeDNXRXVQDDqni4RkKP4F+o5inEuAUNAiogw46mTtcFr8qsK2tb6omJFglpwz1Vp2Ujgvcjx6jSKEbgV9CHc9Yj58T8hzL0JH6es8kaCsZAGlqSrRJi4XS0GWzoXxRRRhseahNjOSqpWt+Mawfuom9GVsoFMLWwix+dc2f3GbYBzoFGE2fUcxIxmuni/dQO9RvHFnwhEC4c8u6iiBiZHAnPidsgi1zkM4I7Ew8TDMUpJVoWxNtwmntyzFHjdWZXk8ZvWtzYykSvMvIhqiYV5Gm2dNZKXFkQyxZmxHYXij7lBFhb1aRsxI0Dyf1nAnllN99zvqzGIkdTcVRndwxZXgWYn3bBaxAyJq+VK/MBLGgxvNuZS4KYpPJvjM2AgmR+AdFwkhzmG06EuKGQmiCy91E6eSeKAxheFPYaOOHjbtR8JpBzmZE0TVxNEXeT/LnD6gZ74h4r3KSM5SH/Mc/zEhPyrw2QRhqcQJLelEaKr3Wf2I3oT1womSjbFvTybpWJv1NRgoB/EAJE4AzTSa6qK+AIgRxOvMYJgJdAMTCzbrQkfPm2IktJWoS5Rr3KpdF9lEHLxp09fnZbWjVxnJgDrkyyzrmgNTuZxC8Dp2mXTJG1txsHTipc27EhPf0RFxO3vfUFPRv8M1ounTDpwcpZbNTbij5yZGgiYfOz4vXlFFMJPMyQBGRmAaTkcf5Zh55HY8Vzl2+zDaOA2MwqbX8bWW9Soj4erAOPYox3DXmhTLGQpV1qONMK1j5UOUsakDmGvMxEfX2uoWFd4UI8G5LW0O5AUmToSXOIs6elCn+bfMVOAU53t6yFsPTMLktZosp1cZCVayPB6oeccub3qCNAmcc9FzSkDgH+sVD1d0Iy6C4SAqNWFxcrWl1udNMZKb1AtugUoSjATHKbh8FnX0wMRIcI2fqdaRyS4cUQ+PRS6oqZNcgYNZjISFzs7qE11dV/ttVps2MRLigRBDXMT6JRYN8ZdTLHmITPdxr8fdYVOhbacwV59zPW+KkZiCAlno3FVZRLSpyrM112BFifFGxWuRf2VYlFAcojuK/1WiqRz0NOn4p2S6vfWFWJE04c+QlNmLtrFMPhsjwZEQh8JuEro57i/xiQLOup6AyO4rhdU9O4KoQ8DekCQYCScFrBToLKDYiQxPwjL6B8qCg3MrNuZUJi9JlM8ltzazXkfP63RIKzKpuObzP1F99CJZ5ceMBCc17qTIIltEa5ZbN2NOmU9Hc1mkj1l50O1wGrRdIEReGyMhSpb4Fqjs+kq2k0BOH8sOlz89Kbj0IZRNYKRL7MFNgAuTfAhRZ0sBZ88hRTASHH2yLl+ps7NcHpN0RzbV1dGPbWMkVY8JljLb3Zyr6rnpQp48F/VU2WbuGXG5v7sc0uLNo0pGwgVSLmsbJzyYYHpTM40PSlUu4fIhxDW8oQc8EnOSXUdok57Io9n2JDCSLFm7dOGOAnwuoukHRsIwcYLgEh0TIQLiQp8WpTDNo1+yiUd1zCHXL7juFHUxkjraxS1x+HZkEZ7DMGQfT+i8zoHUyckbnYspCNTUJoI1EZOHBMU6ErxaMWc1RQRHbeVRme0Fq3I382hK7UlsUcIopvHFQaRKEi81cjrH9SYIvQw3e7loUAkIXmuSFlFlKMFNhKneV5xAqYpVpiixQfrqQnA5QGlfRt9WtJ2V5ksqW3Hh5niIJppdjstiqrjQCF0C+heOs7wI3M1AjIwPcVeISZnFTly1C7tPe+pMg4s1znAmBsmLgL7EpPlHact1D9zPwpEdxyrmriyha+E0xLyx4PF89r1+kpej6dgTdvesgFDGA32HS5Qm/gsv1bLEP/ZGNLKdfniGDxIOcN2IIyrbx3/l/wd2+lnh7coCewAAAABJRU5ErkJggg=="/>
-  </svg>
-</a>
 
+function initAnimation(){
+  const link = document.querySelector('.header__logo-link') as HTMLElement;
+  if(link){
+    link.classList.add('animation');
+  }
+  }
+  useEffect(() => {
+    const timerFill = setTimeout(initAnimation, 7000);
+    return () => clearTimeout(timerFill);
+  },[]);
+
+  return (   
+  <a className="header__logo-link" onClick={(evt) => evt.preventDefault()} href={AppRoute.MAIN}>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="331.644px" height="40.825px" viewBox="0 0 331.644 40.825" xmlSpace="preserve">
+      <g>
+        <path fill="#fff" d="M77.292,15.094H49.249l-1.039,0.777v24.947h7.763v-9.355l0.741-0.664h20.579   c5.196,0,7.632-1.398,7.632-4.985v-5.728C84.924,16.493,82.489,15.094,77.292,15.094 M77.292,24.317   c0,1.69-1.118,2.041-3.554,2.041H56.799l-0.827-0.804V20.21l0.741-0.678h17.025c2.436,0,3.554,0.347,3.554,2.045V24.317z" />
+        <polyline fill="#fff" points="99.081,19.813 105.761,29.6 105.391,30.548 90.618,30.548 86.847,35.187 108.837,35.187 110.361,36.115 113.775,40.824 122.659,40.824 103.186,14.775"/>
+        <polyline fill="#fff" points="187.418,35.757 187.418,28.833 188.217,28.143 203.079,28.143 203.079,23.734 179.524,23.734 179.524,40.823 214.27,40.823 214.27,36.435 188.252,36.435"/>
+        <rect x="179.524" y="15.094" fill="#fff" width="35.113" height="4.848"/>
+        <path fill="#fff" d="M140.361,19.685h28.288c-0.436-3.597-2.668-4.595-8.33-4.595H140.06c-6.389,0-8.427,1.247-8.427,6.082   v13.565c0,4.84,2.038,6.087,8.427,6.087h20.259c5.745,0,7.945-1.079,8.095-4.81h-28.053l-0.832-0.783V20.209"/>
+        <path fill="#fff" d="M29.333,25.118H8.754l-0.606-0.667v-4.402l0.603-0.466h27.742l0.379-0.927   c-0.945-2.431-3.392-3.565-7.936-3.565H9.665c-6.385,0-8.426,1.247-8.426,6.082v2.844c0,4.841,2.041,6.086,8.426,6.086h20.533   l0.645,0.566v4.602l-0.526,0.718H6.83v-0.022H0.678c0,0-0.704,0.353-0.677,0.518c0.525,3.382,2.829,4.34,8.345,4.34h20.987   c6.384,0,8.486-1.247,8.486-6.087v-3.543C37.819,26.363,35.717,25.118,29.333,25.118"/>
+        <path fill="#fff" d="M236.725,14.988h-11.551l-0.627,1.193l12.828,9.351c2.43-1.407,5.074-2.833,7.95-4.24"/>
+        <path fill="#fff" d="M247.075,32.603l11.275,8.222h11.692l0.484-1.089L253.69,27.413   C251.454,29.054,249.245,30.787,247.075,32.603"/>
+        <path fill="#fff" d="M235.006,40.806h-10.451l-0.883-1.383C230.778,32.562,262.56,3.151,331.644,0   C331.644,0,273.658,1.956,235.006,40.806"/>
+      </g>
+    </svg>
+  </a>
   )
 }
 

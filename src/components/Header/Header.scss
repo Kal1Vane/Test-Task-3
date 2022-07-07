@@ -7,6 +7,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  animation: open-page-header 2s cubic-bezier(0.35, 0.46, 0.56, 1.15);
 }
 
 .header {
@@ -24,4 +25,18 @@
     align-items: center;
   }
 
+}
+
+@keyframes open-page-header {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

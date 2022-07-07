@@ -69,7 +69,7 @@
   color: #B1B1B1;
 }
 
-@media screen and (max-width: 867px ) {
+@media screen and (max-width: 930px ) {
 
   .header__mobail-sidebar  {
     display: block;
@@ -85,11 +85,12 @@
     top: 0;
     padding: 20px 0;
     gap: 0;
-    background: linear-gradient(180deg, #fff 15%, #9bc798);
+    opacity: 0;
   }
   .header__nav-list.open {
     display: flex;
     transform: translateX(-60%);
+    opacity: 1;
   }
   .header__mobail-button.open {
     transform: translateX(-180px);
@@ -114,3 +115,4 @@
     border-bottom: 1px solid #e8e9ec;
   }
 }
+
