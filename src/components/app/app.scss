@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+}
+@font-face {
+  font-family: 'Museo-Sans-Cyrl';
+  src: local('Museo-Sans-Cyrl'), url('../../../public/fonts/museo_sans_cyrl_100.ttf') format('opentype');
+  font-weight: 100;
+}
+@font-face {
+  font-family: 'Museo-Sans-Cyrl';
+  src: local('Museo-Sans-Cyrl'), url('../../../public/fonts/museo_sans_cyrl_300.ttf') format('opentype');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Museo-Sans-Cyrl';
+  src: local('Museo-Sans-Cyrl'), url('../../../public/fonts/museo_sans_cyrl_700.ttf') format('opentype');
+  font-weight: 700;
+}
+#root {
+  width: 100%;
+  background: url('/../../project/public/img/background.jpg') no-repeat;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+}
+
+@keyframes open-page {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
