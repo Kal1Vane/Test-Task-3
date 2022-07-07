@@ -1,4 +1,4 @@
-import MainScreen from '../../pages/Main-screen';
+import MainScreen from '../../pages/main-screen';
 import './app.scss';
 
 function App() {

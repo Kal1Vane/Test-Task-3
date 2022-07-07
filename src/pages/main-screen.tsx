@@ -1,5 +1,5 @@
-import Header from "../components/header/Header";
-import ListInfo from "../components/list-info/List-info";
+import Header from "../components/header/header";
+import ListInfo from "../components/list-info/list-info";
 import { AppRoute } from "../const";
 import "./main-screen.scss";
 
