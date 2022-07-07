@@ -9,13 +9,27 @@ body {
 body {
   background-color: black;
 }
-
+@font-face {
+  font-family: 'Museo-Sans-Cyrl';
+  src: local('Museo-Sans-Cyrl'), url('../../../public/fonts/museo_sans_cyrl_100.ttf') format('opentype');
+  font-weight: 100;
+}
+@font-face {
+  font-family: 'Museo-Sans-Cyrl';
+  src: local('Museo-Sans-Cyrl'), url('../../../public/fonts/museo_sans_cyrl_300.ttf') format('opentype');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Museo-Sans-Cyrl';
+  src: local('Museo-Sans-Cyrl'), url('../../../public/fonts/museo_sans_cyrl_700.ttf') format('opentype');
+  font-weight: 700;
+}
 #root {
   width: 100%;
-  background: url('/../../project/public/img/background.png') no-repeat;
+  background: url('/../../project/public/img/background.jpg') no-repeat;
   height: 100vh;
   background-size: cover;
-  background-position-y: -40px;
+  background-position: center center;
 }
 
 @keyframes open-page {
@@ -29,9 +43,3 @@ body {
   }
 }
 
-@media screen and (max-width: 1024px) {
-  #root {
-    background-size: 1250px 1000px;
-    background-position: center center;
-  }
-}

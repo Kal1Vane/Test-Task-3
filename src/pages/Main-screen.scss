@@ -16,6 +16,7 @@
   margin: 0;
   font-size: 48px;
   font-weight: 700;
+  font-family: 'Museo-Sans-Cyrl';
   line-height: 70px;
   background: linear-gradient(90deg, #fff 20%, #FF3F04 100%);
   background-size: 200% auto;
@@ -33,6 +34,7 @@
   background: linear-gradient(90deg, #fff 30%, #FF3F04);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-family: 'Museo-Sans-Cyrl';
 }
 
 .main-section__link {
@@ -44,9 +46,17 @@
   color: #fff;
   padding: 10px 26px;
   border: 1px solid rgba(112,112,112,50%);
+  font-family: 'Museo-Sans-Cyrl';
 }
 
 @media screen and (max-width:460px) {
+  .main-section__header {
+    text-align: center;
+  }
+  .main-section__link {
+    text-align: center;
+    width: 100%;
+  }
   .main-section__list-wrapper {
     width: 100%;
   }
@@ -60,14 +70,64 @@
     padding: 6px 16px;
   }
 }
-.main-section__title {
+.main-section__title,
+.main-section__subtitle {
   animation: infinity-fair 4s infinite linear;
   color: #fff;
 }
 
+.main-section__link {
+  position: relative;
+}
+.border__right-top,
+.border__left-bottom,
+.border__right-bottom,
+.border__left-top {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-right: 0 transparent;
+  border-top: 0 transparent;
+  border-left: 0 transparent;
+  border-bottom: 0 transparent;
+  background:transparent;
+  box-shadow: 0px 0px 50px 7px rgba(255, 255, 255, 1);  
+  transition: all .4s;
+}
 
-
-
+.border__right-top {
+  top: -1px;
+  right: -1px;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+.border__left-bottom {
+  bottom: -1px;
+  left: -1px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+.main-section__link:hover .border__right-bottom{
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  opacity: 1;
+}
+.main-section__link:hover .border__left-top {
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
+  opacity: 1;
+}
+.border__right-bottom {
+  right: -1px;
+  bottom: -1px;
+  opacity: 0;
+}
+.border__left-top {
+  top: -1px;
+  left: -1px;
+  opacity: 0;
+}
 @keyframes infinity-fair {
   0% {
     background-position: 100% 0;

@@ -27,17 +27,20 @@
 }
 .section__item-info span {
   color: #fff;
-  font-family: inherit;
+  font-family: 'Museo-Sans-Cyrl';
   
 }
 .section__item-info span:first-child {
   font-size: 18px;
+  font-weight: 100;
 }
 .section__item-info span:nth-of-type(2) {
-  font-size: 60px;
+  font-size: 50px;
+  font-weight: 700;
 }
 .section__item-info span:last-child {
   font-size: 18px;
+  font-weight: 100;
 }
 
 

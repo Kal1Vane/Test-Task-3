@@ -54,15 +54,7 @@
 }
 
 @media screen and (max-width: 420px) {
-  .header {
-    flex-direction: row-reverse;
-  }
-  .header__logo-link {
-    position: absolute;
-    transform: scale(0.7);
-    left: 0;
-  }
-  .header__logo-link:hover {
-    transform: scale(0.9);
+  .header__logo-link svg{
+    width: 220px;
   }
 }

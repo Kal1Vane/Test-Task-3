@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { AppRoute } from "../../const";
 import './Logo.scss';
 function Logo() : JSX.Element{

@@ -15,7 +15,12 @@ function MainScreen() :JSX.Element {
         </div>
         <a className="main-section__link" 
         onClick={(evt) => evt.preventDefault()}
-        href={AppRoute.FLIGHT}>Начать путешествие</a>
+        href={AppRoute.FLIGHT}>
+          <span className="border__right-top"></span>
+          <span className="border__left-bottom"></span>
+          <span className="border__right-bottom"></span>
+          <span className="border__left-top"></span>
+          Начать путешествие</a>
       </div>  
       <div className="main-section__list-wrapper">
         <ListInfo />
