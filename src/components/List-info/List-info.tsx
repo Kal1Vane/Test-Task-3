@@ -1,4 +1,4 @@
-import './List-info.scss';
+import './list-info.scss';
 
 function ListInfo () :JSX.Element {
   return (

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { AppRoute } from "../../const";
-import './Navigation.scss';
+import './navigation.scss';
 
 function Navigation () {
 

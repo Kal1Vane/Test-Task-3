@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { AppRoute } from "../../const";
-import './Logo.scss';
+import './logo.scss';
 function Logo() : JSX.Element{
 
 function initAnimation(){
